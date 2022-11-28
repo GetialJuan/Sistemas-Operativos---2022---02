@@ -1,0 +1,4 @@
+//Este es el comando recomendado para la compilacion del main.c:
+
+gcc -Wall -Wextra -Werror -pedantic main.c execmd.h  -o eshell
+
