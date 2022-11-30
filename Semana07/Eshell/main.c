@@ -63,8 +63,9 @@ int main(int ac, char **argv){
         //execmd(argv);
 
 	/////////Mi Edicion////
-	
-    	char *tokenPath = strtok(path, delimPath);
+	char *pathCopy = malloc(sizeof(char)* strlen(path));
+	strcpy(pathCopy, path);
+    	char *tokenPath = strtok(pathCopy, delimPath);
 
 	char *comm = malloc(sizeof(char)* (strlen(argv[0]) + 1));
 	strcat(strcpy(comm,"/"),argv[0]);
@@ -83,7 +84,7 @@ int main(int ac, char **argv){
 		tokenPath = strtok(NULL, delimPath);
 	}
 	free(comm);
-	free(tokenPath);
+	free(pathCopy);
 
     } 
 
