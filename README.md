@@ -1,6 +1,6 @@
 # SistemasOperativos2022_Fila2
 ## Integrantes:
-### Julepxy
+### Yapsury
 ### Getial
 ### Maurixio
 ### Kuroko
