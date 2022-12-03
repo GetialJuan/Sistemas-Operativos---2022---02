@@ -17,9 +17,10 @@ int *vector;
 int nprocesadores;
 int stride;
 
+int vl;// vl: vector_length
+
 int main(int argc, char *argv[]) {
-  int vl, // vl: vector_length
-      mr; // mr: max_random
+  int mr; // mr: max_random
   int i;
   pthread_t *hilos;
   int *hilos_id;
@@ -76,12 +77,16 @@ int fibonacci(int m) {
 
 void* fibonacci_over_vector(void *pos) {
   int thread_id = (int) pos;
-  int bajo = thread_id * stride;
-  int alto = (thread_id + 1) * stride;
+  int indice;
   int i;
-  printf("Mi posicion %d el stride %d [%d - %d)\n",thread_id,stride, bajo, alto);
-  for (i = bajo; i < alto; i++) {
-    vector[i] = fibonacci(vector[i]);
+  //printf("Mi posicion %d el stride %d [%d - %d)\n",thread_id,stride, bajo, alto);
+  for (i = 0; i < vl; i++) {
+    indice = (i*nprocesadores) + thread_id;
+    if(indice < vl){
+	vector[indice] = fibonacci(vector[indice]);
+    } else {
+	break; 
+    }
   }
   return NULL;
 }
